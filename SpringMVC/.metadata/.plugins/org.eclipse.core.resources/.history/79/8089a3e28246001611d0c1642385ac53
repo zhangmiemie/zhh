@@ -1,0 +1,52 @@
+package com.boc.cn.Service.Impl;
+
+import java.util.List;
+
+import org.apache.commons.beanutils.PropertyUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.boc.cn.Controller.VO.Product;
+import com.boc.cn.Dao.ProductDao;
+import com.boc.cn.Dao.TransDao;
+import com.boc.cn.Service.ProductService;
+import com.boc.cn.Service.DTO.ProductDTO;
+import com.boc.cn.Service.DTO.ProductInfoReqDto;
+
+@Service("productServiceImpl")
+public class ProductServiceImpl implements ProductService {
+	@Autowired
+	private ProductDao productDao;
+	@Autowired
+	private TransDao transDao;
+
+	public List<ProductDTO> getProducts() {
+		List<ProductDTO> products = productDao.getProducts();
+		return products;
+	}
+
+	public Product getProductInfo(ProductInfoReqDto dto) {
+		Product product = new Product();
+		ProductDTO productDto = productDao.getProductInfo(dto.getId());
+		try{
+			PropertyUtils.copyProperties(product, productDto);
+		}catch(Exception e){
+			return null;
+		}
+		if(dto.getUserId()!=null && dto.getUserType()!=null){
+			
+			if(1==dto.getUserType()){
+				
+			}else{
+				
+			}
+		}
+		return product;
+	}
+
+	public int TransInfo(int contentId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

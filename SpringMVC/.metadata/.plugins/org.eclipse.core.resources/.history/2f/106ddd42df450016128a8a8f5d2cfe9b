@@ -1,0 +1,14 @@
+package com.boc.cn.Dao;
+
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+
+import com.boc.cn.Controller.VO.User;
+
+public interface UserDao {
+	@Results(value = { @Result(property = "userId", column = "Id"),
+			@Result(property = "userName", column = "user_name") })
+	@Select("select * from user")
+	public User getUser(String userName,String password);
+}

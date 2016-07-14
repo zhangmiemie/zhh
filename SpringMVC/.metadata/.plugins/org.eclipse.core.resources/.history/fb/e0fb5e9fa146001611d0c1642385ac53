@@ -1,0 +1,82 @@
+package com.boc.cn.Service.DTO;
+
+public class ProductDTO {
+	private String id;
+	private String title;
+	private String image;
+	private String price;
+	private String summary;
+	private String detail;
+	private Integer buyPrice;
+	private Integer buyNum;
+	private Integer saleNum;
+	private Integer buyTime;
+	private Integer buyerId;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	public Integer getBuyPrice() {
+		return buyPrice;
+	}
+	public void setBuyPrice(Integer buyPrice) {
+		this.buyPrice = buyPrice;
+	}
+	public Integer getBuyNum() {
+		return buyNum;
+	}
+	public void setBuyNum(Integer buyNum) {
+		this.buyNum = buyNum;
+	}
+	public Integer getSaleNum() {
+		return saleNum;
+	}
+	public void setSaleNum(Integer saleNum) {
+		this.saleNum = saleNum;
+	}
+	public String getBuyTime() {
+		return buyTime;
+	}
+	public void setBuyTime(String buyTime) {
+		this.buyTime = buyTime;
+	}
+	public Integer getBuyerId() {
+		return buyerId;
+	}
+	public void setBuyerId(Integer buyerId) {
+		this.buyerId = buyerId;
+	}
+	
+}

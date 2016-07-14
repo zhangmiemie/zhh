@@ -1,0 +1,42 @@
+package com.boc.cn.Dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+
+import com.boc.cn.Service.DTO.ProductDTO;
+
+public interface ProductDao {
+	
+	/*@Results(value = { @Result(property = "id", column = "contentId"),
+			@Result(property = "price", column = "sellPrice"),
+			@Result(property = "title", column = "title"),
+			@Result(property = "summary", column = "abstract"),
+			@Result(property = "detail", column = "text"),
+			@Result(property = "buyerId", column = "personId"),
+			@Result(property = "buyPrice", column = "buyPrice"),
+			@Result(property = "buyTime", column = "buyTime"),
+			@Result(property = "image", column = "icon")})
+	@Select("SELECT a.price as sellPrice,icon, text,abstract,title,personId,b.price as buyPrice,b.time as buyTime,contentId FROM content a LEFT JOIN trx b ON a.id = b.contentId group by contentId")
+	public List<ProductDTO> getProducts();*/
+	
+	@Results(value = { @Result(property = "id", column = "contentId"),
+			@Result(property = "price", column = "sellPrice"),
+			@Result(property = "summary", column = "abstract"),
+			@Result(property = "detail", column = "text"),
+			@Result(property = "buyerId", column = "personId"),
+			@Result(property = "image", column = "icon")})
+	@Select("SELECT a.price as sellPrice,icon, text,abstract,title,personId,b.price as buyPrice,b.time as buyTime,contentId FROM content a LEFT JOIN trx b ON a.id = b.contentId group by contentId")
+	public List<ProductDTO> getProducts();
+	
+	//商品信息
+	@Results(value = { @Result(property = "id", column = "id"),
+			@Result(property = "price", column = "sellPrice"),
+			@Result(property = "summary", column = "abstract"),
+			@Result(property = "detail", column = "text"),
+			@Result(property = "image", column = "icon")})
+	@Select("SELECT * from content where id=#{id}")
+	public ProductDTO getProductInfo(String id);
+}

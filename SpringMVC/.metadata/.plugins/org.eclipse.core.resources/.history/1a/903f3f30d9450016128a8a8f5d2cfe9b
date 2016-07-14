@@ -1,0 +1,23 @@
+package com.boc.cn.Controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.boc.cn.Controller.VO.Result;
+
+@Controller
+public class LoginApiController {
+	// 登陆
+	@RequestMapping(value = "/api/login", method = RequestMethod.POST,produces="application/json")
+	public Result userLogin(HttpServletRequest req) {
+		String userName = req.getParameter("userName");
+		String password = req.getParameter("password");
+		Result loginResult = new Result();
+		loginResult.setCode(200);
+		loginResult.setResult(true);
+		return loginResult;
+	}
+}

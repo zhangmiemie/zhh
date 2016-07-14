@@ -1,0 +1,8 @@
+package com.boc.cn.Dao;
+
+public interface UserDao {
+	@Results(value = { @Result(property = "userId", column = "Id"),
+			@Result(property = "userName", column = "user_name") })
+	@Select("select * from user")
+	public User getUser(String userName,String password);
+}

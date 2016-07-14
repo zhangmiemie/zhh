@@ -1,0 +1,18 @@
+package com.boc.cn.Dao;
+
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+
+import com.boc.cn.Service.DTO.ProductDTO;
+
+public class TransDao {
+	// 交易信息
+	@Results(value = { @Result(property = "id", column = "id"),
+			@Result(property = "price", column = "sellPrice"),
+			@Result(property = "summary", column = "abstract"),
+			@Result(property = "detail", column = "text"),
+			@Result(property = "image", column = "icon") })
+	@Select("SELECT * from content where id=#{id}")
+	public ProductDTO getProductInfo(String id);
+}

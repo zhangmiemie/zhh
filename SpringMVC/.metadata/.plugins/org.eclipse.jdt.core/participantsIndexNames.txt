@@ -1,0 +1,3 @@
+INDEX VERSION 1.126
+E:\workspace\SpringMVC\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\893552416.index
+\SpringMVC\src\main\resources

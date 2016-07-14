@@ -1,0 +1,7 @@
+package com.boc.cn.Service.Impl;
+
+import com.boc.cn.Service.PersonService;
+
+public class PersonServiceImpl implements PersonService {
+
+}

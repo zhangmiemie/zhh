@@ -1,0 +1,9 @@
+package com.boc.cn.Controller.VO;
+
+public class Result {
+	
+	private int code;
+	private String message;
+	private boolean result;
+
+}

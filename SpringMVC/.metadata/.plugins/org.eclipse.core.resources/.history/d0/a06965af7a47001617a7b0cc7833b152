@@ -1,0 +1,62 @@
+package com.boc.cn.Controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.boc.cn.Controller.VO.Product;
+import com.boc.cn.Controller.VO.User;
+import com.boc.cn.Service.ProductService;
+import com.boc.cn.Service.DTO.ProductDTO;
+
+@Controller
+public class SellerController {
+	@Autowired
+	private ProductService productServiceImpl;
+	// 发布
+	@RequestMapping(value = "/public", method = RequestMethod.GET)
+	public String publicProduct(HttpServletRequest req, ModelMap map) {
+		User user = CurrentUser.getUserInSession(req);
+		map.addAttribute("user", user);
+		return "public";
+	}
+
+	// 发布提交
+	@RequestMapping(value = "/publicSubmit", method = RequestMethod.POST)
+	public String publicSubmit(HttpServletRequest req, ModelMap map) {
+		User user = CurrentUser.getUserInSession(req);
+		ProductDTO dto = new ProductDTO();
+		dto.setTitle(req.getParameter("title"));
+		dto.setImage(req.getParameter("image"));
+		dto.setDetail(req.getParameter("detail"));
+		dto.setPrice(req.getParameter("price"));
+		dto.setSummary(req.getParameter("summary"));
+		Product product = productServiceImpl.insertProduct(dto);
+		
+		map.addAttribute("user", user);
+		return "publicSubmit";
+	}
+
+	// 编辑
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public String edit(HttpServletRequest req, ModelMap map) {
+		User user = null;
+		map.addAttribute("user", user);
+		String id = req.getParameter("id");
+		Product product = new Product();
+		map.addAttribute("product", product);
+		return "edit";
+	}
+
+	// 编辑提交
+	@RequestMapping(value = "/editSubmit", method = RequestMethod.GET)
+	public String editSubmit(HttpServletRequest req, ModelMap map) {
+		User user = null;
+		map.addAttribute("user", user);
+		return "editSubmit";
+	}
+}

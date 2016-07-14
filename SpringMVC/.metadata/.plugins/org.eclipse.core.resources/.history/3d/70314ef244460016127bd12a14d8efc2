@@ -1,0 +1,5 @@
+package com.boc.cn.Service.DTO;
+
+public class ProductDTO {
+
+}

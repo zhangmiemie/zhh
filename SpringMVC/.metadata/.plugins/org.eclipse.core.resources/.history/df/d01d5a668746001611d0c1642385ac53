@@ -1,0 +1,62 @@
+package com.boc.cn.Service.Impl;
+
+import java.util.List;
+
+import org.apache.commons.beanutils.PropertyUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.boc.cn.Controller.VO.Product;
+import com.boc.cn.Dao.ProductDao;
+import com.boc.cn.Dao.TransDao;
+import com.boc.cn.Service.ProductService;
+import com.boc.cn.Service.DTO.ProductDTO;
+import com.boc.cn.Service.DTO.ProductInfoReqDto;
+import com.boc.cn.Service.DTO.TransDTO;
+
+@Service("productServiceImpl")
+public class ProductServiceImpl implements ProductService {
+	@Autowired
+	private ProductDao productDao;
+	@Autowired
+	private TransDao transDao;
+
+	public List<ProductDTO> getProducts() {
+		List<ProductDTO> products = productDao.getProducts();
+		return products;
+	}
+
+	public Product getProductInfo(ProductInfoReqDto dto) {
+		Product product = new Product();
+		ProductDTO productDto = productDao.getProductInfo(dto.getId());
+		try{
+			PropertyUtils.copyProperties(product, productDto);
+		}catch(Exception e){
+			return null;
+		}
+		if(dto.getUserId()!=null && dto.getUserType()!=null){
+			List<TransDTO> trans = null;
+			if(1==dto.getUserType()){
+				trans = transDao.getTrans(dto.getId(),null);
+				if(trans!=null){
+					product.setSell(true);
+					product.setSaleNum(trans.size());
+				}		
+			}else{
+				trans = transDao.getTrans(dto.getId(),dto.getUserId());
+				if(trans!=null){
+					product.setBuy(true);
+					product.setBuyNum(trans.size());
+					product.setBuyPrice(trans.get(0).getPrice());
+				}	
+			}
+		}
+		return product;
+	}
+
+	public int TransInfo(int contentId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

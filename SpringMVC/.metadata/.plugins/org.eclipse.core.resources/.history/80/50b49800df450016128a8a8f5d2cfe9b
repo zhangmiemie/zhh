@@ -1,0 +1,16 @@
+package com.boc.cn.Service.Impl;
+
+import org.springframework.stereotype.Service;
+
+import com.boc.cn.Controller.VO.User;
+import com.boc.cn.Service.UserService;
+
+@Service("userServiceImpl")
+public class UserServiceImpl implements UserService {
+	
+
+	public User getUser(String userName, String password) {
+		return null;
+	}
+
+}

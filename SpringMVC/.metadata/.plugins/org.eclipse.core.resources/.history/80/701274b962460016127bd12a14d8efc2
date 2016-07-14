@@ -1,0 +1,24 @@
+package com.boc.cn.Dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+
+import com.boc.cn.Service.DTO.ProductDTO;
+
+public interface ProductDao {
+	@Results(value = { @Result(property = "id", column = "b.contentId"),
+			@Result(property = "price", column = "a.price"),
+			@Result(property = "title", column = "a.title"),
+			@Result(property = "summary", column = "abstract"),
+			@Result(property = "detail", column = "text"),
+			@Result(property = "buyerId", column = "b.personId"),
+			@Result(property = "buyPrice", column = "b.price"),
+			@Result(property = "buyTime", column = "buyTime"),
+			@Result(property = "image", column = "a.icon")})
+	@Select("SELECT a.price,a.icon, text,abstract,a.title,b.personId,b.price,b.time as buyTime,b.contentId FROM content a LEFT JOIN trx b ON a.id = b.contentId")
+	public List<ProductDTO> getProducts(int userId,int userType);
+
+}

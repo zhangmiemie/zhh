@@ -1,0 +1,10 @@
+package com.boc.cn.Service.DTO;
+
+import java.util.List;
+
+import com.boc.cn.Controller.VO.Product;
+
+public class BuyDTO {
+	private List<Product> buyList;
+	private int total;
+}

@@ -1,0 +1,6 @@
+package com.boc.cn.Service;
+
+@Service
+public class PersonService {
+
+}

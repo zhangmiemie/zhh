@@ -1,0 +1,5 @@
+package com.boc.cn.Controller.VO;
+
+public class Result {
+
+}

@@ -1,0 +1,13 @@
+package com.boc.cn.Service.Impl;
+
+import com.boc.cn.Controller.VO.User;
+import com.boc.cn.Service.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	public User getUser(String userName, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

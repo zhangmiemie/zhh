@@ -1,0 +1,20 @@
+package com.boc.cn.Service.Impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.boc.cn.Controller.VO.User;
+import com.boc.cn.Dao.UserDao;
+import com.boc.cn.Service.UserService;
+
+@Service("userServiceImpl")
+public class UserServiceImpl implements UserService {
+	@Autowired
+	private UserDao userDao;
+
+	public User getUser(String userName, String password) {
+		User user = null;
+		user = userDao.getUser(userName, password);
+	}
+
+}

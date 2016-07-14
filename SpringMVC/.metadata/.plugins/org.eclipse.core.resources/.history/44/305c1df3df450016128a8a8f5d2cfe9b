@@ -1,0 +1,12 @@
+package com.boc.cn.Service;
+
+import org.springframework.stereotype.Service;
+
+import com.boc.cn.Controller.VO.User;
+
+@Service
+public interface UserService {
+	
+	public User getUser(String userName,String password); 
+
+}

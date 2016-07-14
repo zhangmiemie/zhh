@@ -1,0 +1,13 @@
+package com.boc.cn.Dao;
+
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+
+import com.boc.cn.Service.DTO.ProductDTO;
+
+public interface TransDao {
+	// 交易信息
+	@Select("SELECT COUNT(*) FROM trx WHERE contentId=#{id} AND personId=(CASE WHEN #{userID} is NULL then personId else #{userID} end) ")
+	public int getTrans(String id,String userId);
+}

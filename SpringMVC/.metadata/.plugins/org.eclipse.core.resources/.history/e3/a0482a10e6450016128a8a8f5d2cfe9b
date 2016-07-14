@@ -1,0 +1,29 @@
+package com.boc.cn.Service.Impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.boc.cn.Dao.UserDao;
+import com.boc.cn.Service.UserService;
+import com.boc.cn.Service.DTO.UserDTO;
+
+@Service("userServiceImpl")
+public class UserServiceImpl implements UserService {
+	@Autowired
+	private UserDao userDao;
+
+	public String isUser(String userName, String password) {
+		UserDTO user = null;
+		String message = null;
+		user = userDao.getUser(userName);
+		if (user!=null){
+			if(!password.equals(user.getPassword()))
+				message = "密码错误！";				
+		}else{
+			message="无此用户！";
+		}
+			
+		return message;
+	}
+
+}

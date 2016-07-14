@@ -1,0 +1,26 @@
+package com.boc.cn.Service.DTO;
+
+public class ProductInfoReqDto {
+	private String id;
+	private int userType;
+	private int userId;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getUserType() {
+		return userType;
+	}
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+}
